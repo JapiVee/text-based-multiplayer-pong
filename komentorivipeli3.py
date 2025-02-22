@@ -616,6 +616,7 @@ class Ball:
             flickercoords = [[1,0],[int(gameboard.width/2),gameboard.height]]
             gameboard.flickertimer = dying_duration*60
             gameboard.setFlicker(flickercoords[0], flickercoords[1],ball_reset_callback)
+            online_turn = True
     def send(self):
         global outputbuffer, online_turn, frames_buffer, framerate, life_count, running
         online_turn = False

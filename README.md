@@ -22,6 +22,22 @@ score based winning on local machine, lives based on
 over the network
 Superb collision check using reverse raycasting
 
+system requirements:
+a reasonably modern desktop processor
+or high end laptop processor
+
+This is not by any means a serious project,
+the main goal is to have fun.
+
+known bugs:
+might not show "your turn" ascii art to
+owner on linked tv terminal as game starts
+
+feature plan:
+multiprocessing for server
+compressing tv stream data
+anything you like :)
+
 
 
 

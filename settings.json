@@ -1,0 +1,21 @@
+{
+    "background_character":".",
+    "racket_one_character":"|",
+    "racket_two_character":"|",
+    "ball_character":"O",
+    "ball_starting_speed":2,
+    "racket_moving_wait_time":2, //how many ticks in between the the initial movement and the next one
+    "racket_size":10,
+    "racket_spin":0.7, //how much ball changes direction when hit by a corner of a racket
+    "boost_duration":0.1, //how long boost should be active once initiated
+    "boost_reload_time":3, //in seconds
+    "boost_speed":0.25, //how much the boost increases the speed, in absolute units
+    "boost_character":"-",//which character represents the boost reload
+    "max_pass_angle":1, //how much vertical speed the ball can get on pass
+    "pass_click_count":40, //how many clicks count as a perfect pass
+    "losing_scene_duration":3, //how many seconds dying takes
+    "width":120,
+    "height":30,
+    "force_dimensions":false
+
+}

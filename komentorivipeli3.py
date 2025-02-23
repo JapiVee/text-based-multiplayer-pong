@@ -627,11 +627,11 @@ class Ball:
         status_number = "06"
         if (life_count == 0):
             status_number = "07"
-        outputbuffer += status_number + state_object + "__end1337__"
+        outputbuffer += status_number + state_object
         new_output.set()
         output_ready_to_write.wait(1)
         json_frames = [[frame, framerate] for frame in frames_buffer]
-        outputbuffer += "05"+ json.dumps(json_frames) +  "__end1337__"
+        outputbuffer += "05"+ json.dumps(json_frames)
         new_output.set()
         frames_buffer = []
         self.hidden = True
@@ -773,6 +773,7 @@ while(running):
         frame_time = time.time() 
         
     if (online_turn and tick%3==2):
+        output_ready_to_write.wait(0.1)
         json_frames = [[frame, framerate] for frame in frames_buffer]
         outputbuffer += "05"+ json.dumps(json_frames)
         new_output.set()

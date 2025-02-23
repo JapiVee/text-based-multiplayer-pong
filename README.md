@@ -55,7 +55,6 @@ known bugs:
 might not show "your turn" ascii art to
 owner on linked tv terminal as game starts
 
-server seems to get some kind of error when connecting from outside internet. May be related to buffer handling
 #################
 feature plan:
 

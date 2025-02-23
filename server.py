@@ -175,7 +175,7 @@ def service_connection(key, mask):
                     while (len(decoded_data_list)>1):
                         handle_a_message(decoded_data_list[0])
                         decoded_data_list.pop(0)
-                    data.inb = bytes("__end1337__".join(decoded_data_list[0]).encode())
+                    data.inb = bytes(decoded_data_list[0].encode())
                 else:
                     return
                 

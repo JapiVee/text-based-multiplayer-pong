@@ -9,6 +9,7 @@ import msvcrt
 import socket
 import threading
 import json
+import re
 def clear_input():
     while msvcrt.kbhit():
         msvcrt.getch()
@@ -40,6 +41,7 @@ outputbuffer = ""
 flickercolor = 31
 ball_incoming = False
 username = ""
+compression = True
 def read(sock):
     read_temp_buffer = b""
     while True:
@@ -294,6 +296,7 @@ elif (gametype.lower() == "w"):
     readbuffer =""
     input_ready_to_write.set()
     new_message.clear()
+    letter = watch_settings["background_character"]
     size_not_set = True
     watch_tick = 0
     draw_buffer = []
@@ -344,6 +347,8 @@ elif (gametype.lower() == "w"):
             new_message.clear()
         if (len(draw_buffer) > buffer_size or (playback_started and len(draw_buffer) > 0)):
             playback_started = True
+            if (isinstance(draw_buffer[0][0],list)):
+                draw_buffer[0][0] = "".join([x[0]+x[1]*letter for x in draw_buffer[0][0]])
             sys.stdout.write("\033[H")
             sys.stdout.write(f"\r{draw_buffer[0][0]}")#draw_buffer[0][0][:len(draw_buffer[0][0])-20] + str(int(len(draw_buffer))) + draw_buffer[0][0][len(draw_buffer[0][0])-12:]
             sys.stdout.flush()
@@ -764,7 +769,14 @@ while(running):
             outputbuffer += "08"
             new_output.set()
     if online_turn:
-        frames_buffer.append(output)
+        if compression:
+            match_list = re.findall(fr"([^\{letter}l]+)(\{letter}+|$)", output)
+            compressed_list = []
+            for tuple in match_list:
+                compressed_list.append([tuple[0], len(tuple[1])])
+            frames_buffer.append(compressed_list)
+        else:
+            frames_buffer.append(output)
     sys.stdout.write("\033[H")       
     sys.stdout.write(f"\r{output}")
     sys.stdout.flush()

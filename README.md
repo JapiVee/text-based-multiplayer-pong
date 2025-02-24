@@ -60,8 +60,6 @@ feature plan:
 
 multiprocessing for server
 
-compressing tv stream data
-
 anything you like :)
 
 
